@@ -9,11 +9,11 @@ interface IRoute {
 }
 
 export const routesConfig: Record<string, IRoute> = {
-  ["/homework1"]: {
-    title: "Домашнее задание №1",
+  "/homework1": {
+    title: "Игральный кубик",
     element: <HomeWork1 />,
   },
-  ["/homework2"]: {
+  "/homework2": {
     title: "Домашнее задание №2",
     element: <HomeWork2 />,
   },
