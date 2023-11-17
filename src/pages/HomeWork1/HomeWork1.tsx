@@ -1,9 +1,10 @@
 import style from "./HomeWork1.module.css";
 import DotMaping from "./components/DotMaping";
 
-import useGetDotNumber from "./hooks/useGetDotNumber";
+import { useGetDotNumber } from "./hooks/useGetDotNumber";
+
 export const HomeWork1 = () => {
-  const { showCubeNumber, getRndCubeNumber } = useGetDotNumber();
+  const { showCubeNumber, getRndCubeNumber } = useGetDotNumber(1, 6);
 
   return (
     <div className={style.homeWork_container}>
@@ -15,7 +16,7 @@ export const HomeWork1 = () => {
       <button
         className={style.cube_button}
         type="button"
-        onClick={() => getRndCubeNumber(1, 6)}
+        onClick={getRndCubeNumber}
       >
         Бросить кубик
       </button>

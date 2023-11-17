@@ -1,11 +1,12 @@
 import { useMemo, useState } from "react";
 
-const useGetDotNumber = () => {
+export const useGetDotNumber = (min: number, max: number) => {
   const [cubeNumber, setCubeNumber] = useState<number>();
 
-  function getRndCubeNumber(min: number, max: number): void {
+  //зависит от стейта (setCubeNumber)
+  const getRndCubeNumber = (): void => {
     setCubeNumber(Math.floor(Math.random() * (max - min + 1)) + min);
-  }
+  };
 
   const showCubeNumber = useMemo(() => {
     const dotArray: number[] = [];
@@ -18,4 +19,3 @@ const useGetDotNumber = () => {
   }, [cubeNumber]);
   return { showCubeNumber, getRndCubeNumber };
 };
-export default useGetDotNumber;
