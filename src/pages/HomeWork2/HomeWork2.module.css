@@ -1,4 +1,37 @@
 .HomeWork2_container {
-  background-color: antiquewhite;
-  height: 10000px;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  overflow-y: auto;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 233, 45, 1) 100%
+  );
+  border-radius: 2rem;
+  .HomeWork2_container_content {
+    height: 10000px;
+  }
+  .title {
+    font-size: 1rem;
+  }
+
+  .scroll_container {
+    padding: 5px 45px;
+    position: fixed;
+    margin: 0 auto;
+    font-size: 1rem;
+    top: 50%;
+    z-index: 11;
+  }
+  .scroll_container_progress {
+    position: absolute;
+    background: rgb(34, 193, 195);
+    z-index: 10;
+    height: 20%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
