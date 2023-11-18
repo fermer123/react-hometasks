@@ -8,7 +8,9 @@ export const HomeWork2 = () => {
     const scrollPosition = homeWork.current?.scrollTop;
     if (scrollPosition) {
       const progress = Math.floor(
-        (scrollPosition / homeWork.current.scrollHeight) * 100
+        (scrollPosition /
+          (homeWork.current.scrollHeight - homeWork.current.clientHeight)) *
+          100
       );
       setScroll(progress);
     }
