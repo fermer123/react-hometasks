@@ -7,12 +7,11 @@ import { ReactComponent as ReactLogoUp } from "../../assets/up.svg";
 import { ReactComponent as ReactLogonone } from "../../assets/none.svg";
 
 interface IHeaderProps {
-  rows: ITableProps["rows"];
   onSetDirection: (item: string) => void;
   direction?: string;
 }
 
-const Header: FC<IHeaderProps> = ({ rows, onSetDirection, direction }) => {
+const Header: FC<IHeaderProps> = ({ onSetDirection, direction }) => {
   const selectIcon = () => {
     if (direction === undefined) {
       return <ReactLogonone />;

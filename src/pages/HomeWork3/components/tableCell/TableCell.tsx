@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import style from "./TableCell.module.css";
 
 interface ITableCell {
@@ -18,4 +18,4 @@ const TableCell: FC<ITableCell> = ({ rowItem, icon, onSetDirection }) => {
   );
 };
 
-export default TableCell;
+export default memo(TableCell);

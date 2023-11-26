@@ -6,7 +6,6 @@ export const sort = <T>(
   column: keyof T
 ): T[] => {
   const sortedArr = [...arr];
-  console.log("sortedArr", sortedArr);
   if (isNumberArray(sortedArr.map((e) => e[column]))) {
     if (direction === "asc") {
       const arrToSort = sortedArr
