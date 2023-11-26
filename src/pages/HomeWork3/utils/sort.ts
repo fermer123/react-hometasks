@@ -1,22 +1,37 @@
-import { isNumberArray, isStringArray } from "../types/types";
+import { TSortDirection, isNumberArray, isStringArray } from "../types/types";
 
-type TSortDirection = "asc" | "desc";
-
-export const sort = <T>(arr: T[], direction: TSortDirection = "asc"): T[] => {
+export const sort = <T>(
+  arr: T[],
+  direction: TSortDirection = "asc",
+  column: keyof T
+): T[] => {
   const sortedArr = [...arr];
-  if (isNumberArray(arr)) {
+  if (isNumberArray(sortedArr.map((e) => e[column]))) {
     if (direction === "asc") {
-      sortedArr.sort((a, b) => (a as number) - (b as number));
-    } else {
-      sortedArr.sort((a, b) => (b as number) - (a as number));
+      return sortedArr.sort(
+        (a, b) => (a[column] as number) - (b[column] as number)
+      );
+    }
+    if (direction === "desc") {
+      return sortedArr.sort((a, b) => {
+        return (b[column] as number) - (a[column] as number);
+      });
     }
   }
-  if (isStringArray(arr)) {
+  if (isStringArray(sortedArr.map((e) => e[column]))) {
     if (direction === "asc") {
-      sortedArr.sort((a, b) => (a as string).localeCompare(b as string));
-    } else {
-      sortedArr.sort((a, b) => (b as string).localeCompare(a as string));
+      return sortedArr.sort((a, b) =>
+        (a[column] as string).localeCompare(b[column] as string)
+      );
     }
+    if (direction === "desc") {
+      return sortedArr.sort((a, b) =>
+        (b[column] as string).localeCompare(a[column] as string)
+      );
+    }
+  }
+  if (column === undefined) {
+    return sortedArr;
   }
   return sortedArr;
 };

@@ -10,6 +10,13 @@ export const isNumberArray = (arr: unknown): arr is number[] => {
   }
   return false;
 };
+
+export type TSortDirection = "asc" | "desc";
+export enum ESort {
+  asc = "asc",
+  desc = "desc",
+}
+
 export interface ITableProps {
   rows: Array<Record<string, string | number>>;
 }
