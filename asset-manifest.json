@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/react-hometasks/static/css/main.94119bdb.css",
-    "main.js": "/react-hometasks/static/js/main.ed042628.js",
+    "main.js": "/react-hometasks/static/js/main.238fe529.js",
     "static/js/787.c8a8309b.chunk.js": "/react-hometasks/static/js/787.c8a8309b.chunk.js",
     "static/media/up.svg": "/react-hometasks/static/media/up.6e384f8cd852d82827081d0bf429d604.svg",
     "index.html": "/react-hometasks/index.html",
     "static/media/none.svg": "/react-hometasks/static/media/none.8cbae5282216d690f0ce03a410bd23fb.svg",
     "static/media/down.svg": "/react-hometasks/static/media/down.69b9dd4b13a9ef185a72a4f1acd99ac5.svg",
     "main.94119bdb.css.map": "/react-hometasks/static/css/main.94119bdb.css.map",
-    "main.ed042628.js.map": "/react-hometasks/static/js/main.ed042628.js.map",
+    "main.238fe529.js.map": "/react-hometasks/static/js/main.238fe529.js.map",
     "787.c8a8309b.chunk.js.map": "/react-hometasks/static/js/787.c8a8309b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.94119bdb.css",
-    "static/js/main.ed042628.js"
+    "static/js/main.238fe529.js"
   ]
 }
