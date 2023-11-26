@@ -1,3 +1,6 @@
+import { SortableTable } from "./components/table/SortableTable";
+import { rows } from "./constants/tableData";
+
 export const HomeWork3 = () => {
-  return <div>123</div>;
+  return <SortableTable rows={rows} />;
 };

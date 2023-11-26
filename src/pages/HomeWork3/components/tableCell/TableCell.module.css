@@ -1,0 +1,7 @@
+.tableCell_container {
+  border: 1px solid;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+}
