@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useCallback } from "react";
 import style from "./Header.module.css";
 import { ESort } from "../../types/types";
 import TableCell from "../tableCell/TableCell";
@@ -17,18 +17,21 @@ const Header: FC<IHeaderProps> = ({
   direction,
   columnDirection,
 }) => {
-  const selectIcon = (item: string) => {
-    if (direction === undefined && item === columnDirection) {
+  const selectIcon = useCallback(
+    (item: string) => {
+      if (direction === undefined && item === columnDirection) {
+        return <ReactLogonone />;
+      }
+      if (direction === ESort.asc && item === columnDirection) {
+        return <ReactLogoUp />;
+      }
+      if (direction === ESort.desc && item === columnDirection) {
+        return <ReactLogoDown />;
+      }
       return <ReactLogonone />;
-    }
-    if (direction === ESort.asc && item === columnDirection) {
-      return <ReactLogoUp />;
-    }
-    if (direction === ESort.desc && item === columnDirection) {
-      return <ReactLogoDown />;
-    }
-    return <ReactLogonone />;
-  };
+    },
+    [columnDirection, direction]
+  );
   return (
     <div className={style.header_container}>
       <TableCell
