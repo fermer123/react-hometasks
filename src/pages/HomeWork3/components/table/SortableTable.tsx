@@ -32,11 +32,15 @@ export const SortableTable: FC<ITableProps> = ({ rows }) => {
   );
 
   return (
-    <div>
-      <Header direction={direction} onSetDirection={handleSetDirection} />
+    <>
+      <Header
+        columnDirection={columnDirection}
+        direction={direction}
+        onSetDirection={handleSetDirection}
+      />
       {sortedRows.map((row) => (
         <TableRow row={row} />
       ))}
-    </div>
+    </>
   );
 };
