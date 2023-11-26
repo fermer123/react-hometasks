@@ -1,24 +1,43 @@
 import { FC, useMemo, useState, useCallback } from "react";
-import { ITableProps, TSortDirection } from "../../types/types";
+import { ESort, ITableProps, TSortDirection } from "../../types/types";
 import TableRow from "../tableRow/TableRow";
 import Header from "../header/Header";
 import { sort } from "../../utils/sort";
 
 export const SortableTable: FC<ITableProps> = ({ rows }) => {
-  const [direction, setDirection] = useState<string>("");
+  const [direction, setDirection] = useState<TSortDirection | undefined>();
+  const [columnDirection, setColumnDirection] = useState<string>("");
 
-  const diretion = useCallback(
-    (param: TSortDirection) => {
-      setDirection(param);
+  const handleSetDirection = useCallback(
+    (item: string) => {
+      if (direction === undefined) {
+        setColumnDirection(item);
+        setDirection(ESort.asc);
+      }
+      if (direction === ESort.asc) {
+        setColumnDirection(item);
+        setDirection(ESort.desc);
+      }
+      if (direction === ESort.desc) {
+        setColumnDirection(item);
+        setDirection(undefined);
+      }
     },
-    [setDirection]
+    [direction]
   );
-  const sortedRows = useMemo(() => sort(rows, "desc", ""), [rows, direction]);
 
-  console.log(sortedRows);
+  const sortedRows = useMemo(
+    () => sort(rows, direction, columnDirection),
+    [columnDirection, direction, rows]
+  );
+
   return (
     <div>
-      <Header rows={rows} />
+      <Header
+        direction={direction}
+        onSetDirection={handleSetDirection}
+        rows={rows}
+      />
       {sortedRows.map((row) => (
         <TableRow row={row} />
       ))}

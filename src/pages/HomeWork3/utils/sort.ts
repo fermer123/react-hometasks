@@ -6,28 +6,47 @@ export const sort = <T>(
   column: keyof T
 ): T[] => {
   const sortedArr = [...arr];
+  console.log("sortedArr", sortedArr);
   if (isNumberArray(sortedArr.map((e) => e[column]))) {
     if (direction === "asc") {
-      return sortedArr.sort(
-        (a, b) => (a[column] as number) - (b[column] as number)
-      );
+      const arrToSort = sortedArr
+        .map((e) => e[column])
+        .sort((a, b) => (a as number) - (b as number));
+      sortedArr.forEach((el, idx) => {
+        return (el[column] = arrToSort[idx]);
+      });
+      return sortedArr;
     }
     if (direction === "desc") {
-      return sortedArr.sort((a, b) => {
-        return (b[column] as number) - (a[column] as number);
+      const arrToSort = sortedArr
+        .map((e) => e[column])
+        .sort((a, b) => {
+          return (b as number) - (a as number);
+        });
+      sortedArr.forEach((el, idx) => {
+        return (el[column] = arrToSort[idx]);
       });
+      return sortedArr;
     }
   }
   if (isStringArray(sortedArr.map((e) => e[column]))) {
     if (direction === "asc") {
-      return sortedArr.sort((a, b) =>
-        (a[column] as string).localeCompare(b[column] as string)
-      );
+      const arrToSort = sortedArr
+        .map((e) => e[column])
+        .sort((a, b) => (a as string).localeCompare(b as string));
+      sortedArr.forEach((el, idx) => {
+        return (el[column] = arrToSort[idx]);
+      });
+      return sortedArr;
     }
     if (direction === "desc") {
-      return sortedArr.sort((a, b) =>
-        (b[column] as string).localeCompare(a[column] as string)
-      );
+      const arrToSort = sortedArr
+        .map((e) => e[column])
+        .sort((a, b) => (b as string).localeCompare(a as string));
+      sortedArr.forEach((el, idx) => {
+        return (el[column] = arrToSort[idx]);
+      });
+      return sortedArr;
     }
   }
   if (column === undefined) {
