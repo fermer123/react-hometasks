@@ -4,19 +4,18 @@ export const HomeWork2 = () => {
   const [scroll, setScroll] = useState<number>(0);
   const homeWork = useRef<HTMLDivElement>(null);
 
-  const handleScroll = () => {
-    const scrollPosition = homeWork.current?.scrollTop;
-    if (scrollPosition) {
-      const progress = Math.floor(
-        (scrollPosition /
-          (homeWork.current.scrollHeight - homeWork.current.clientHeight)) *
-          100
-      );
-      setScroll(progress);
-    }
-  };
-
   useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = homeWork.current?.scrollTop;
+      if (scrollPosition) {
+        const progress = Math.floor(
+          (scrollPosition /
+            (homeWork.current.scrollHeight - homeWork.current.clientHeight)) *
+            100
+        );
+        setScroll(progress);
+      }
+    };
     const container = homeWork.current;
     if (container) {
       container.addEventListener("scroll", handleScroll);

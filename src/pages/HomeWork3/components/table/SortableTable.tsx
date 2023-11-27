@@ -38,8 +38,8 @@ export const SortableTable: FC<ITableProps> = ({ rows }) => {
         direction={direction}
         onSetDirection={handleSetDirection}
       />
-      {sortedRows.map((row) => (
-        <TableRow row={row} />
+      {sortedRows.map((row, idx) => (
+        <TableRow key={idx} row={row} />
       ))}
     </>
   );
