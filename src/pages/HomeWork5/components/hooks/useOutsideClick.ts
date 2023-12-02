@@ -8,7 +8,6 @@ export const useOutsideClick = (
     const handleClick = (e: any) => {
       if (ref.current && !ref.current.contains(e.target)) fn();
     };
-
     document.addEventListener("click", handleClick);
     return () => document.removeEventListener("click", handleClick);
   }, [fn, ref]);
