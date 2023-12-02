@@ -1,25 +1,27 @@
-import { useState, useRef, useMemo } from "react";
+import { useState, useRef, useMemo, useDeferredValue } from "react";
 import { useOutsideClick } from "./hooks/useOutsideClick";
 import { useInput } from "./hooks/useInput";
 import style from "./CustomInput.module.css";
 import { useRandomGenerate } from "./utils/randomGenerate";
 export const CustomInput = ({}) => {
-  const [isOpen, setOpen] = useState<boolean>(true);
+  const [isOpen, setOpen] = useState<boolean>(false);
   const mainRef = useRef<HTMLDivElement>(null);
-  const value = useInput("");
-  const options = useRandomGenerate(100);
+
+  const options = useRandomGenerate(10000);
+  const [text, setText] = useState("");
+  const value = useInput(text, 400);
   useOutsideClick(mainRef, () => {
     setOpen(false);
   });
-
   const sortedOption = useMemo(() => {
-    return options.filter((e) => e.includes(value.value));
+    return options.filter((e) => e.includes(value));
   }, [options, value]);
 
   return (
     <div ref={mainRef} className={style.input_container}>
       <input
-        {...value}
+        value={text}
+        onChange={(e) => setText(e.target.value)}
         onClick={() => setOpen(true)}
         className={style.input_field}
       />
