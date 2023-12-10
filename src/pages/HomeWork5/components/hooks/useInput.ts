@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useInput = (initialValue = "", delay = 400) => {
+export const useInput = <T>(initialValue: T, delay = 400): T => {
   const [value, setValue] = useState(initialValue);
 
   useEffect(() => {

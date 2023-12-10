@@ -1,26 +1,14 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCustomRef } from "./hooks/useCudomRref";
 
 const Button = () => {
-  const [color, setColor] = useState<string>("red");
-
-  const handleChangeButtonColor = useCallback(() => {
-    setColor((prev) => (prev === "red" ? "blue" : "red"));
-  }, []);
-
-  useEffect(() => {
-    const btn = document.getElementById("btn");
-    if (btn) {
-      btn.addEventListener("click", handleChangeButtonColor);
-      return () => btn.removeEventListener("click", handleChangeButtonColor);
-    }
-  }, [color]);
+  const { setRef, handleChangeButtonColor } = useCustomRef();
 
   return (
     <button
       key="btn"
-      id="btn"
+      ref={setRef}
+      onClick={handleChangeButtonColor}
       style={{
-        backgroundColor: color,
         width: "100px",
         height: "50px",
         border: "1px solid",
